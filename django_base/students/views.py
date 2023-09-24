@@ -49,11 +49,15 @@ def generate_students(request):
             "error": "Параметр count пивинен бути більше 0 та менше або дорівнювати 100"
         })
     
-    students = list()
-    for i in range(count):
-        students.append(
-            create_student()
-        )
+    # students = list()
+    # for i in range(count):
+    #     students.append(
+    #         create_student()
+    #     )
+
+    # Спрощенний варіант від викладача - list-comprehensions
+    # https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions
+    students = [create_student() for i in range(count)]
 
     return JsonResponse({
         "students": students
